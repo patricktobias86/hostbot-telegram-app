@@ -1,12 +1,12 @@
 document.getElementById('apiRequestBtn').addEventListener('click', function() {
-
+    const webapp = window.Telegram.WebApp;
     const url = "/api";
     const options = {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: window.Telegram.WebApp
+        body: webapp
     };
 
     fetch(url, options)
