@@ -1,5 +1,5 @@
 document.getElementById('apiRequestBtn').addEventListener('click', function() {
-    const url = "https://api.retool.com/v1/workflows/383e6e73-f240-4a66-b851-f96dc51918c3/startTrigger?workflowApiKey=retool_wk_85c0de03ea5840a190dba376d1721b57";
+    const url = "/request";
     const options = {
         method: 'POST',
         headers: {
