@@ -1,15 +1,15 @@
 document.getElementById('apiRequestBtn').addEventListener('click', function() {
-    const webapp = window.Telegram.WebApp;
-    const url = "/api/workflows/383e6e73-f240-4a66-b851-f96dc51918c3/startTrigger?workflowApiKey=retool_wk_85c0de03ea5840a190dba376d1721b57";
+    const myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
+    const raw = JSON.stringify(window.Telegram.WebApp);
     const options = {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: webapp
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
     };
 
-    fetch(url, options)
+    fetch(url"/api/startTrigger?workflowApiKey=retool_wk_85c0de03ea5840a190dba376d1721b57", options)
     .then(response => {
         if (response.status === 200) {
             document.getElementById('responseMsg').textContent = 'Success! The API returned a 200 status.';
