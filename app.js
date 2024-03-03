@@ -4,7 +4,8 @@ document.getElementById('apiRequestBtn').addEventListener('click', function() {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
-        }
+        },
+        body: window.Telegram.WebAppUser
     };
 
     fetch(url, options)
