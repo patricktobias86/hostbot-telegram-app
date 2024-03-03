@@ -1,11 +1,12 @@
 document.getElementById('apiRequestBtn').addEventListener('click', function() {
+    const userdata = JSON.stringify(Telegram.WebApp.initData);
     const url = "https://api.retool.com/v1/workflows/383e6e73-f240-4a66-b851-f96dc51918c3/startTrigger?workflowApiKey=retool_wk_85c0de03ea5840a190dba376d1721b57";
     const options = {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: window.Telegram.WebAppUser
+        body: userdata
     };
 
     fetch(url, options)
