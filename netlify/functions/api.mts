@@ -1,4 +1,4 @@
-import type {Config, Context} from '@netlify/edge-functions'
+import type {Config, Context} from '@netlify/functions'
 export default async (request : Request, context : Context) => {
   const response = await context.next()
   return new Response(response.body, {
@@ -8,5 +8,5 @@ export default async (request : Request, context : Context) => {
   })
 }
 export const config : Config = {
-  path: '/api'
+  path: '/*'
 }
