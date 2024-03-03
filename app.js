@@ -9,7 +9,7 @@ document.getElementById('apiRequestBtn').addEventListener('click', function() {
         redirect: 'follow'
     };
 
-    fetch("/api", options)
+    fetch("/api/?workflowApiKey=retool_wk_85c0de03ea5840a190dba376d1721b57", options)
     .then(response => {
         if (response.status === 200) {
             document.getElementById('responseMsg').textContent = 'Success! The API returned a 200 status.';
