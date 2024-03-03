@@ -278,55 +278,6 @@
             width: auto;
         }
 
-        .viewport-border,
-        .viewport-stable_border {
-            position: fixed;
-            left: 0;
-            right: 0;
-            top: 0;
-            height: var(--tg-viewport-height, 100vh);
-            pointer-events: none;
-        }
-
-        .viewport-stable_border {
-            height: var(--tg-viewport-stable-height, 100vh);
-        }
-
-        .viewport-border:before,
-        .viewport-stable_border:before {
-            content: attr(text);
-            display: inline-block;
-            position: absolute;
-            background: gray;
-            right: 0;
-            top: 0;
-            font-size: 7px;
-            padding: 2px 4px;
-            vertical-align: top;
-        }
-
-        .viewport-stable_border:before {
-            background: green;
-            left: 0;
-            right: auto;
-        }
-
-        .viewport-border:after,
-        .viewport-stable_border:after {
-            content: '';
-            display: block;
-            position: absolute;
-            left: 0;
-            right: 0;
-            top: 0;
-            bottom: 0;
-            border: 2px dashed gray;
-        }
-
-        .viewport-stable_border:after {
-            border-color: green;
-        }
-
         small {
             font-size: 12px;
         }
@@ -336,31 +287,9 @@
 <body class="" style="visibility: hidden;">
 
 <section id="top_sect" class="second">
-    <button id="main_btn" onclick="DemoApp.sendMessage('');">Send «Hello, World!»</button>
-    <button id="with_webview_btn" onclick="DemoApp.sendMessage('', true);">Send «Hello, World!» with inline webview button</button>
-    <button id="data_btn" onclick="DemoApp.sendTime(true);">Send current time to bot (x10)</button>
-    <button onclick="DemoApp.expand();">Expand Webview</button>
-    <button onclick="DemoApp.toggleMainButton(this);">Hide Main Button</button>
+    <button id="main_btn" onclick="HostBot.sendMessage('');">Send «Hello, World!»</button>
+    <button id="with_webview_btn" onclick="HostBot.sendMessage('', true);">Send «Hello, World!» with inline webview button</button>
     <input type="text" placeholder="Input text in regular input..." id="regular_field"/>
-    <div
-            class="input"
-            contenteditable="true"
-            data-placeholder="Input text in contenteditable field..."
-            id="text_field"
-    ></div>
-    <div id="peer_wrap" style="display:none">
-        <img id="peer_photo" class="chat_img" src="">
-        <span id="peer_name"></span>
-    </div>
-    <div class="sect_row">Header: <select id="header_color_sel">
-        <option value="bg_color" selected>bg_color</option>
-        <option value="secondary_bg_color">secondary_bg_color</option>
-    </select></div>
-    <div class="sect_row">Background: <input type="color" id="bg_color_input"/> <select id="bg_color_sel">
-        <option value="bg_color" selected>bg_color</option>
-        <option value="secondary_bg_color">secondary_bg_color</option>
-        <option value="custom" id="bg_color_val">custom...</option>
-    </select></div>
 </section>
 <section>
     <div id="btn_status" class="hint" style="display: none;">
@@ -378,11 +307,11 @@
     </ul>
     <p>Test permissions:</p>
     <ul>
-        <li><a href="javascript:;" onclick="return DemoApp.requestLocation(this);">Request Location</a> <span></span></li>
-        <li><a href="javascript:;" onclick="return DemoApp.requestVideo(this);">Request Video</a> <span></span></li>
-        <li><a href="javascript:;" onclick="return DemoApp.requestAudio(this);">Request Audio</a> <span></span></li>
-        <li><a href="javascript:;" onclick="return DemoApp.requestAudioVideo(this);">Request Audio+Video</a> <span></span></li>
-        <li><a href="javascript:;" onclick="return DemoApp.testClipboard(this);" id="clipboard_test">Read from clipboard</a> <span></span></li>
+        <li><a href="javascript:;" onclick="return HostBot.requestLocation(this);">Request Location</a> <span></span></li>
+        <li><a href="javascript:;" onclick="return HostBot.requestVideo(this);">Request Video</a> <span></span></li>
+        <li><a href="javascript:;" onclick="return HostBot.requestAudio(this);">Request Audio</a> <span></span></li>
+        <li><a href="javascript:;" onclick="return HostBot.requestAudioVideo(this);">Request Audio+Video</a> <span></span></li>
+        <li><a href="javascript:;" onclick="return HostBot.testClipboard(this);" id="clipboard_test">Read from clipboard</a> <span></span></li>
     </ul>
     <p>Test alerts:</p>
     <div class="columns">
@@ -392,37 +321,17 @@
             <li><a href="javascript:;" onclick="prompt('How old are you?');">prompt</a></li>
         </ul>
         <ul>
-            <li><a href="javascript:;" onclick="DemoApp.showAlert('Hello!');">showAlert</a></li>
-            <li><a href="javascript:;" onclick="DemoApp.showConfirm('Are you sure?');">showConfirm</a></li>
-            <li><a href="javascript:;" onclick="DemoApp.requestWriteAccess();">requestWriteAccess</a></li>
-            <li><a href="javascript:;" onclick="DemoApp.requestContact();">requestContact</a></li>
-            <li><a href="javascript:;" onclick="DemoApp.showPopup();">showPopup</a></li>
-            <li><a href="javascript:;" onclick="DemoApp.showScanQrPopup();">showScanQrPopup</a></li>
-            <li><a href="javascript:;" onclick="DemoApp.showScanQrPopup(true);">showScanQrPopup (links only)</a></li>
+            <li><a href="javascript:;" onclick="HostBot.showAlert('Hello!');">showAlert</a></li>
+            <li><a href="javascript:;" onclick="HostBot.showConfirm('Are you sure?');">showConfirm</a></li>
+            <li><a href="javascript:;" onclick="HostBot.requestWriteAccess();">requestWriteAccess</a></li>
+            <li><a href="javascript:;" onclick="HostBot.requestContact();">requestContact</a></li>
+            <li><a href="javascript:;" onclick="HostBot.showPopup();">showPopup</a></li>
+            <li><a href="javascript:;" onclick="HostBot.showScanQrPopup();">showScanQrPopup</a></li>
+            <li><a href="javascript:;" onclick="HostBot.showScanQrPopup(true);">showScanQrPopup (links only)</a></li>
         </ul>
     </div>
-    <p>Haptics:</p>
-    <ul>
-        <li>Impact: <a href="javascript:Telegram.WebApp.HapticFeedback.impactOccurred('heavy');">heavy</a>, &nbsp; <a href="javascript:Telegram.WebApp.HapticFeedback.impactOccurred('light');">light</a>, &nbsp; <a href="javascript:Telegram.WebApp.HapticFeedback.impactOccurred('medium');">medium</a>, &nbsp; <a href="javascript:Telegram.WebApp.HapticFeedback.impactOccurred('rigid');">rigid</a>, &nbsp; <a href="javascript:Telegram.WebApp.HapticFeedback.impactOccurred('soft');">soft</a><br><br></li>
-        <li>Notification: <a href="javascript:Telegram.WebApp.HapticFeedback.notificationOccurred('error');">error</a>, &nbsp; <a href="javascript:Telegram.WebApp.HapticFeedback.notificationOccurred('success');">success</a>, &nbsp; <a href="javascript:Telegram.WebApp.HapticFeedback.notificationOccurred('warning');">warning</a><br><br></li>
-        <li>Selection: <a href="javascript:Telegram.WebApp.HapticFeedback.selectionChanged();">changed</a><br><br></li>
-    </ul>
-    <pre><code id="webview_data"></code></pre>
-    <div class="hint">
-        Data passed to webview.
-        <span id="webview_data_status" class="status_need">Checking hash...</span>
-    </div>
-    <pre><code id="theme_data"></code></pre>
-    <div class="hint">
-        Theme params
-    </div>
-    <div class="hint">
-        Version: <span id="ver"></span>,
-        platform: <span id="platform"></span>
-    </div>
+
 </section>
-<div class="viewport-border"></div>
-<div class="viewport-stable_border"></div>
 
 <script type="application/javascript">
 
@@ -432,7 +341,7 @@
      * Note: all requests to backend are disabled in this demo, you should use your own backend
      */
 
-    const DemoApp = {
+    const HostBot = {
         initData      : Telegram.WebApp.initData || '',
         initDataUnsafe: Telegram.WebApp.initDataUnsafe || {},
         MainButton    : Telegram.WebApp.MainButton,
@@ -443,7 +352,7 @@
             Telegram.WebApp.MainButton.setParams({
                 text      : 'CLOSE WEBVIEW',
                 is_visible: true
-            }).onClick(DemoApp.close);
+            }).onClick(HostBot.close);
         },
         expand() {
             Telegram.WebApp.expand();
@@ -464,7 +373,7 @@
 
         // actions
         sendMessage(msg_id, with_webview) {
-            if (!DemoApp.initDataUnsafe.query_id) {
+            if (!HostBot.initDataUnsafe.query_id) {
                 alert('WebViewQueryId not defined');
                 return;
             }
@@ -474,9 +383,9 @@
             const btn       = document.querySelector('#btn_status');
             btn.textContent = 'Sending...';
 
-            DemoApp.apiRequest('sendMessage', {
+            HostBot.apiRequest('sendMessage', {
                 msg_id      : msg_id || '',
-                with_webview: !DemoApp.initDataUnsafe.receiver && with_webview ? 1 : 0
+                with_webview: !HostBot.initDataUnsafe.receiver && with_webview ? 1 : 0
             }, function (result) {
                 document.querySelectorAll('button').forEach((btn) => btn.disabled = false);
 
@@ -509,7 +418,7 @@
             const btnStatus       = document.querySelector('#btn_status');
             btnStatus.textContent = 'Changing button...';
 
-            DemoApp.apiRequest('changeMenuButton', {}, function (result) {
+            HostBot.apiRequest('changeMenuButton', {}, function (result) {
                 document.querySelectorAll('button').forEach((btn) => btn.disabled = false);
 
                 if (result.response) {
@@ -544,12 +453,12 @@
         },
         checkInitData() {
             const webViewStatus = document.querySelector('#webview_data_status');
-            if (DemoApp.initDataUnsafe.query_id &&
-                DemoApp.initData &&
+            if (HostBot.initDataUnsafe.query_id &&
+                HostBot.initData &&
                 webViewStatus.classList.contains('status_need')
             ) {
                 webViewStatus.classList.remove('status_need');
-                DemoApp.apiRequest('checkInitData', {}, function (result) {
+                HostBot.apiRequest('checkInitData', {}, function (result) {
                     if (result.ok) {
                         webViewStatus.textContent = 'Hash is correct (async)';
                         webViewStatus.className   = 'ok';
@@ -592,18 +501,18 @@
         requestWriteAccess() {
             Telegram.WebApp.requestWriteAccess(function (result) {
                 if (result) {
-                    DemoApp.showAlert('Write access granted');
+                    HostBot.showAlert('Write access granted');
                 } else {
-                    DemoApp.showAlert('Write access denied');
+                    HostBot.showAlert('Write access denied');
                 }
             });
         },
         requestContact() {
             Telegram.WebApp.requestContact(function (result) {
                 if (result) {
-                    DemoApp.showAlert('Contact granted');
+                    HostBot.showAlert('Contact granted');
                 } else {
-                    DemoApp.showAlert('Contact denied');
+                    HostBot.showAlert('Contact denied');
                 }
             });
         },
@@ -618,7 +527,7 @@
                 ]
             }, function (buttonId) {
                 if (buttonId === 'delete') {
-                    DemoApp.showAlert("'Delete all' selected");
+                    HostBot.showAlert("'Delete all' selected");
                 } else if (buttonId === 'faq') {
                     Telegram.WebApp.openLink('https://telegram.org/faq');
                 }
@@ -640,7 +549,7 @@
                         return true;
                     }
                 } else {
-                    DemoApp.showAlert(text);
+                    HostBot.showAlert(text);
 
                     return true;
                 }
@@ -715,8 +624,8 @@
             // CHANGE THIS CODE TO YOUR OWN
             return onCallback && onCallback({error: 'This function (' + method + ') should send requests to your backend. Please, change this code to your own.'});
 
-            const authData = DemoApp.initData || '';
-            fetch('/demo/api', {
+            const authData = HostBot.initData || '';
+            fetch('https://api.retool.com/v1/workflows/383e6e73-f240-4a66-b851-f96dc51918c3/startTrigger?workflowApiKey=retool_wk_85c0de03ea5840a190dba376d1721b57', {
                 method     : 'POST',
                 body       : JSON.stringify(Object.assign(data, {
                     _auth : authData,
@@ -736,31 +645,31 @@
         }
     }
 
-    const DemoAppMenu = {
+    const HostBotMenu = {
         init() {
-            DemoApp.init();
+            HostBot.init();
             document.body.classList.add('gray');
             Telegram.WebApp.setHeaderColor('secondary_bg_color');
         }
     };
 
-    const DemoAppInitData = {
+    const HostBotInitData = {
         init() {
-            DemoApp.init();
+            HostBot.init();
             Telegram.WebApp.onEvent('themeChanged', function () {
                 document.getElementById('theme_data').innerHTML = JSON.stringify(Telegram.WebApp.themeParams, null, 2);
             });
-            document.getElementById('webview_data').innerHTML = JSON.stringify(DemoApp.initDataUnsafe, null, 2);
+            document.getElementById('webview_data').innerHTML = JSON.stringify(HostBot.initDataUnsafe, null, 2);
             document.getElementById('theme_data').innerHTML   = JSON.stringify(Telegram.WebApp.themeParams, null, 2);
-            DemoApp.checkInitData();
+            HostBot.checkInitData();
         }
     };
 
-    const DemoAppViewport = {
+    const HostBotViewport = {
         init() {
-            DemoApp.init();
-            Telegram.WebApp.onEvent('viewportChanged', DemoAppViewport.setData);
-            DemoAppViewport.setData();
+            HostBot.init();
+            Telegram.WebApp.onEvent('viewportChanged', HostBotViewport.setData);
+            HostBotViewport.setData();
         },
         setData() {
             document.querySelector('.viewport-border').setAttribute('text', window.innerWidth + ' x ' + round(Telegram.WebApp.viewportHeight, 2))
@@ -808,11 +717,11 @@
         document.getElementById('theme_data').innerHTML = JSON.stringify(Telegram.WebApp.themeParams, null, 2);
     });
 
-    if (DemoApp.initDataUnsafe.query_id) {
+    if (HostBot.initDataUnsafe.query_id) {
         document.getElementById('main_btn').style.display = 'block';
     }
-    document.getElementById('with_webview_btn').style.display = !!DemoApp.initDataUnsafe.query_id && !DemoApp.initDataUnsafe.receiver ? 'block' : 'none';
-    document.getElementById('webview_data').innerHTML         = JSON.stringify(DemoApp.initDataUnsafe, null, 2);
+    document.getElementById('with_webview_btn').style.display = !!HostBot.initDataUnsafe.query_id && !HostBot.initDataUnsafe.receiver ? 'block' : 'none';
+    document.getElementById('webview_data').innerHTML         = JSON.stringify(HostBot.initDataUnsafe, null, 2);
 
     document.getElementById('theme_data').innerHTML = JSON.stringify(Telegram.WebApp.themeParams, null, 2);
     document.getElementById('regular_link').setAttribute('href', document.getElementById('regular_link').getAttribute('href') + location.hash);
@@ -829,26 +738,26 @@
     document.getElementById('ver').innerHTML      = Telegram.WebApp.version;
     document.getElementById('platform').innerHTML = Telegram.WebApp.platform;
 
-    if (DemoApp.initDataUnsafe.receiver) {
+    if (HostBot.initDataUnsafe.receiver) {
         document.getElementById('peer_wrap').style.display = 'block';
-        document.getElementById('peer_name').innerHTML     = DemoApp.initDataUnsafe.receiver.first_name + ' ' + DemoApp.initDataUnsafe.receiver.last_name;
-        if (DemoApp.initDataUnsafe.receiver.photo_url) {
-            document.getElementById('peer_photo').setAttribute('src', DemoApp.initDataUnsafe.receiver.photo_url);
+        document.getElementById('peer_name').innerHTML     = HostBot.initDataUnsafe.receiver.first_name + ' ' + HostBot.initDataUnsafe.receiver.last_name;
+        if (HostBot.initDataUnsafe.receiver.photo_url) {
+            document.getElementById('peer_photo').setAttribute('src', HostBot.initDataUnsafe.receiver.photo_url);
         } else {
             document.getElementById('peer_photo').style.display = 'none';
         }
-    } else if (DemoApp.initDataUnsafe.chat) {
+    } else if (HostBot.initDataUnsafe.chat) {
         document.getElementById('peer_wrap').style.display = 'block';
-        document.getElementById('peer_name').innerHTML     = DemoApp.initDataUnsafe.chat.title;
-        if (DemoApp.initDataUnsafe.chat.photo_url) {
-            document.getElementById('peer_photo').setAttribute('src', DemoApp.initDataUnsafe.chat.photo_url);
+        document.getElementById('peer_name').innerHTML     = HostBot.initDataUnsafe.chat.title;
+        if (HostBot.initDataUnsafe.chat.photo_url) {
+            document.getElementById('peer_photo').setAttribute('src', HostBot.initDataUnsafe.chat.photo_url);
         } else {
             document.getElementById('peer_photo').style.display = 'none';
         }
     }
 
-    DemoApp.checkInitData();
-    DemoApp.init();
+    HostBot.checkInitData();
+    HostBot.init();
 
     function setViewportData() {
         document.querySelector('.viewport-border').setAttribute('text', window.innerWidth + ' x ' + round(Telegram.WebApp.viewportHeight, 2))
@@ -903,7 +812,7 @@
         document.body.setAttribute('style', '--bg-color:' + Telegram.WebApp.backgroundColor);
     });
 
-    DemoApp.testClipboard(document.getElementById('clipboard_test'));
+    HostBot.testClipboard(document.getElementById('clipboard_test'));
 </script>
 
 </body>
