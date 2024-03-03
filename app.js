@@ -1,4 +1,5 @@
 document.getElementById('apiRequestBtn').addEventListener('click', function() {
+
     const url = "/request";
     const options = {
         method: 'POST',
@@ -6,7 +7,7 @@ document.getElementById('apiRequestBtn').addEventListener('click', function() {
             'Content-Type': 'application/json',
             'access-control-allow-origin': '*'
         },
-        body: JSON.stringify(Telegram.WebApp.initData)
+        body: window.Telegram.WebApp
     };
 
     fetch(url, options)
