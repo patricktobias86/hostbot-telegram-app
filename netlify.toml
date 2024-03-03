@@ -1,5 +1,12 @@
+# The following redirect is intended for use with most SPAs that handle
+# routing internally.
 [[redirects]]
-  force = true
-  from = "/request"
+  from = "/*"
+  to = "/index.html"
   status = 200
-  to = "https://api.retool.com/v1/workflows/383e6e73-f240-4a66-b851-f96dc51918c3/startTrigger?workflowApiKey=retool_wk_85c0de03ea5840a190dba376d1721b57"
+
+[[headers]]
+  # Define which paths this specific [[headers]] block will cover.
+  for = "/*"
+    [headers.values]
+    Access-Control-Allow-Origin = "*"

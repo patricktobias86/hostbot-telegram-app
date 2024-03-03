@@ -4,8 +4,7 @@ document.getElementById('apiRequestBtn').addEventListener('click', function() {
     const options = {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
-            'access-control-allow-origin': '*'
+            'Content-Type': 'application/json'
         },
         body: window.Telegram.WebApp
     };
