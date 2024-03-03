@@ -1,6 +1,6 @@
 document.getElementById('apiRequestBtn').addEventListener('click', function() {
     const myHeaders = new Headers();
-myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Content-Type", "application/json");
     const raw = JSON.stringify(window.Telegram.WebApp);
     const options = {
         method: 'POST',
