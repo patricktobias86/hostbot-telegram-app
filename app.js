@@ -3,7 +3,7 @@ document.getElementById('apiRequestBtn').addEventListener('click', function() {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     const userName = window.Telegram.WebApp.initDataUnsafe.username;
-    const raw = '{"variables":[{"name":"telegram_user","variable":"{telegram_user}","value":"' + userName + '"}]}'
+    const raw = '{"variables":[{"name":"telegram_user","variable":"{telegram_user}","value":"' + userName + '"}]}';
     const options = {
         method: 'POST',
         headers: myHeaders,
