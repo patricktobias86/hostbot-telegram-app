@@ -3,7 +3,7 @@ document.getElementById('apiRequestBtn').addEventListener('click', function() {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     const userName = window.Telegram.WebApp.initDataUnsafe.user.username;
-    const raw = '{"variables":[{"name":"telegram_user","variable":"{telegram_user}","value":"' + userName + '"}]}';
+    const raw = '{ "user": "' + userName + '" }';
     const options = {
         method: 'POST',
         headers: myHeaders,
@@ -14,9 +14,11 @@ document.getElementById('apiRequestBtn').addEventListener('click', function() {
     fetch(url, options)
     .then(response => {
         if (response.status === 200) {
-            document.getElementById('responseMsg').textContent = 'The API returned a 200 status.';
+            document.getElementById('responseMsg').textContent = 'Try again if you don't become co-host within a few seconds.';
         } else if (response.status === 500) {
             document.getElementById('errorMsg').textContent = 'The API returned a 500 status.';
+        } else if (response.status === 400) {
+            document.getElementById('errorMsg').textContent = 'You need to link your Telegram & Discord accounts to use this bot! Go to the Discord server to create the link!';
         } else {
             document.getElementById('errorMsg').textContent = 'Unexpected status code: ' + response.status;
         }
