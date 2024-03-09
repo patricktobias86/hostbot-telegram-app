@@ -14,15 +14,15 @@ document.getElementById('apiRequestBtn').addEventListener('click', function() {
     fetch(url, options)
     .then(response => {
         if (response.status === 200) {
-            document.getElementById('responseMsg').textContent = 'Success! The API returned a 200 status.';
+            document.getElementById('responseMsg').textContent = 'The API returned a 200 status.';
         } else if (response.status === 500) {
-            document.getElementById('responseMsg').textContent = 'Server error! The API returned a 500 status.';
+            document.getElementById('errorMsg').textContent = 'The API returned a 500 status.';
         } else {
-            document.getElementById('responseMsg').textContent = 'Unexpected status code: ' + response.status;
+            document.getElementById('errorMsg').textContent = 'Unexpected status code: ' + response.status;
         }
     })
     .catch(error => {
         console.error('Error during fetch: ', error);
-        document.getElementById('responseMsg').textContent = 'Failed to send request.';
+        document.getElementById('errorMsg').textContent = 'Failed to send request.';
     });
 });
