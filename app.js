@@ -14,7 +14,7 @@ document.getElementById('apiRequestBtn').addEventListener('click', function() {
     fetch(url, options)
     .then(response => {
         if (response.status === 200) {
-            document.getElementById('responseMsg').textContent = 'HOSTBOT was triggered successfully..';
+            document.getElementById('responseMsg').textContent = 'HOSTBOT was triggered successfully.';
         } else if (response.status === 500) {
             document.getElementById('errorMsg').textContent = 'The API returned a 500 status.';
         } else if (response.status === 400) {
