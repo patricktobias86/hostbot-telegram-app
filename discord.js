@@ -1,9 +1,11 @@
 document.getElementById('apiRequestBtn').addEventListener('click', function() {
+    const discordId = window.Telegram.WebApp.initDataUnsafe.start_param;
     const url = "https://api.retool.com/v1/workflows/383e6e73-f240-4a66-b851-f96dc51918c3/startTrigger/?workflowApiKey=retool_wk_85c0de03ea5840a190dba376d1721b57";
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     const userName = window.Telegram.WebApp.initDataUnsafe.user.username.toLowerCase();
-    const raw = '{ "user": "' + userName + '" }';
+    const userId = window.Telegram.WebApp.initDataUnsafe.user.userid;
+    const raw = '{ "userName": "' + userName + '" }';
     const options = {
         method: 'POST',
         headers: myHeaders,
