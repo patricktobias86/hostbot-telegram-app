@@ -1,31 +1,3 @@
-    const HostBot = {
-        initData      : Telegram.WebApp.initData || '',
-        initDataUnsafe: Telegram.WebApp.initDataUnsafe || {},
-        MainButton    : Telegram.WebApp.MainButton,
-
-        init(options) {
-            document.body.style.visibility = '';
-            Telegram.WebApp.ready();
-            Telegram.WebApp.MainButton.setParams({
-                text      : 'CLOSE HOSTBOT',
-                is_visible: true
-            }).onClick(HostBot.close);
-        },
-        expand() {
-            Telegram.WebApp.expand();
-        },
-        close() {
-            Telegram.WebApp.close();
-        },
-        // Alerts
-        showAlert(message) {
-            Telegram.WebApp.showAlert(message);
-        },
-        showConfirm(message) {
-            Telegram.WebApp.showConfirm(message);
-        },
-    }
-
 // Extracting user data
 const { username, id } = window.Telegram.WebApp.initDataUnsafe.user;
 const userName = username.toLowerCase();
