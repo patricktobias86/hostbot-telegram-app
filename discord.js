@@ -1,11 +1,11 @@
 document.getElementById('apiRequestBtn').addEventListener('click', function() {
     const discordId = window.Telegram.WebApp.initDataUnsafe.start_param;
-    const url = "https://api.retool.com/v1/workflows/383e6e73-f240-4a66-b851-f96dc51918c3/startTrigger/?workflowApiKey=retool_wk_85c0de03ea5840a190dba376d1721b57";
+    const url = "https://api.retool.com/v1/workflows/52501fa7-dec0-418c-8dff-0100842b1f95/startTrigger/?workflowApiKey=retool_wk_497caf6d3c514bd2812036b8f65da46d";
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     const userName = window.Telegram.WebApp.initDataUnsafe.user.username.toLowerCase();
-    const userId = window.Telegram.WebApp.initDataUnsafe.user.userid;
-    const raw = '{ "userName": "' + userName + '" }';
+    const userId = window.Telegram.WebApp.initDataUnsafe.user.id;
+    const raw = '{"telegramUser":"' + userName + '","discordId":"' + discordId + '", "telegramId": "' + userId + '"}';
     const options = {
         method: 'POST',
         headers: myHeaders,
@@ -16,11 +16,11 @@ document.getElementById('apiRequestBtn').addEventListener('click', function() {
     fetch(url, options)
     .then(response => {
         if (response.status === 200) {
-            document.getElementById('responseMsg').textContent = 'Thank you for helping out!';
+            document.getElementById('responseMsg').textContent = 'Your accounts have been linked!';
         } else if (response.status === 500) {
             document.getElementById('errorMsg').textContent = 'The API returned a 500 status.';
         } else if (response.status === 400) {
-            document.getElementById('errorMsg').textContent = 'You need to link your Telegram & Discord accounts to use this bot! Go to the Discord server to create the link!';
+            document.getElementById('errorMsg').textContent = 'The API returned a 400 status.';
         } else {
             document.getElementById('errorMsg').textContent = 'Unexpected status code: ' + response.status;
         }
