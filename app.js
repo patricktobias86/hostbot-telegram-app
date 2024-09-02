@@ -36,7 +36,7 @@ document.getElementById('apiRequestBtn').addEventListener('click', () => {
     const successMessage = 'Thank you for helping out!';
     const errorMessages = {
         500: 'The API returned a 500 status.',
-        400: 'You need to link your Telegram & Discord account, go to Discord to link your accounts.'
+        400: 'In order to link your Telegram and Discord account you need to go to our Discord server and find the channel for the Hostbot and press the "Link Telegram" button.'
     };
     sendApiRequest(url, body, successMessage, errorMessages);
 });
