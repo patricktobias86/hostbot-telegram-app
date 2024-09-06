@@ -1,6 +1,3 @@
-// netlify/functions/apiRequests.js
-const fetch = require('node-fetch');
-
 exports.handler = async (event) => {
     try {
         // Parse request body
