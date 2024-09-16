@@ -47,7 +47,7 @@ ul {
 }
 
 body {
-    background-color: var(--telegram-bg-color);
+    background-color: var(--telegram-secondary-bg-color);
     margin:0;
     padding:0;
 }
