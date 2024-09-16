@@ -14,17 +14,13 @@ exports.handler = async (event) => {
             body = { user: userName };
             successMessage = 'Thank you for helping out!';
             errorMessages = {
-                500: 'The API returned a 500 status.',
-                400: 'In order to link your Telegram and Discord account you need to go to our Discord server and find the channel for the Hostbot and press the "Link Telegram" button.'
+                500: 'Error: Please try again.',
+                400: 'This user is not linked to the hostbot.'
             };
         } else if (action === 'linkDiscord') {
             url = process.env.RETOOL_API_URL_2;
             body = { telegramUser: userName, discordId: discordId, telegramId: userId };
             successMessage = 'Your accounts have been linked!';
-            errorMessages = {
-                500: 'The API returned a 500 status.',
-                400: 'The API returned a 400 status.'
-            };
         }
 
         // Send API request
