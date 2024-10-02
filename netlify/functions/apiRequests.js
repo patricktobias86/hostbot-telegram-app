@@ -10,7 +10,7 @@ exports.handler = async (event) => {
         let errorMessages = {};
 
         if (action === 'firstButton') {
-            url = process.env.RETOOL_API_URL_1;
+            url = 'https://primepnp.retool.com/url/telegram/selfassign';
             body = { user: userName };
             successMessage = 'Thank you for helping out!';
             errorMessages = {
@@ -18,7 +18,7 @@ exports.handler = async (event) => {
                 400: 'This user is not linked to the hostbot.'
             };
         } else if (action === 'linkDiscord') {
-            url = process.env.RETOOL_API_URL_2;
+            url = 'https://primepnp.retool.com/url/telegram/link';
             body = { telegramUser: userName, discordId: discordId, telegramId: userId };
             successMessage = 'Your accounts have been linked!';
         }
