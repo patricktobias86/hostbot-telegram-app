@@ -25,17 +25,6 @@
       "oAP" : "\/public\/.gitignore",
       "oF" : 0
     },
-    "\/netlify\/functions\/apiRequests.js" : {
-      "bF" : 0,
-      "ft" : 64,
-      "ma" : 0,
-      "mi" : 1,
-      "oA" : 1,
-      "oAP" : "\/public\/netlify\/functions\/apiRequests.js",
-      "oF" : 1,
-      "sC" : 0,
-      "tS" : 0
-    },
     "\/netlify\/functions\/selfAssign.js" : {
       "bF" : 0,
       "ft" : 64,
