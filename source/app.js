@@ -4,9 +4,6 @@ const userName = username ? username.toLowerCase() : '';
 const userId = id;
 const discordId = window.Telegram.WebApp.initDataUnsafe.start_param;
 
-// Google Apps Script API URL
-const googleApiUrl = 'https://script.google.com/macros/s/AKfycbyFZzVHs1DcLNaqduDckWR45SuxXASAie9ioedmElsd8v9A5MjufTw3lJscQXl0ay1jsA/exec';
-
 // Utility function to display messages
 const showMessage = (elementId, message) => {
     const element = document.getElementById(elementId);
@@ -16,7 +13,7 @@ const showMessage = (elementId, message) => {
 // Generalized function to handle API requests directly to Google Apps Script
 async function callGoogleApi(action, data = {}) {
     try {
-        const response = await fetch(googleApiUrl, {
+        const response = await fetch('/api/user', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ action, ...data })
