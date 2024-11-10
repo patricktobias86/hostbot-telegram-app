@@ -13,7 +13,7 @@ exports.handler = async (event) => {
   }
 
   const { action, identifier, value, telegramUser, discordId, telegramId, newTelegramUser, newDiscordId, newTelegramId } = requestBody;
-  const googleApiUrl = process.env.GOOGLE_API_URL;
+  const googleApiUrl = 'https://script.google.com/macros/s/AKfycbwiOGrtL0UkHFDToUOcz3GEFkvY89wT53vasHO227xco4W-i8HbBNQYKFUInFFe-cqqHQ/exec';
 
   if (!googleApiUrl) {
     return {
