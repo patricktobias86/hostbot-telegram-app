@@ -5,10 +5,8 @@ const showMessage = (elementId, message) => {
 };
 
 // Extracting user data from the Telegram WebApp
-const { username, id } = window.Telegram.WebApp.initDataUnsafe.user;
+const { username } = window.Telegram.WebApp.initDataUnsafe.user;
 const userName = username ? username.toLowerCase() : '';
-const userId = id;
-const discordId = window.Telegram.WebApp.initDataUnsafe.start_param;
 
 // Function to send API requests to Netlify functions
 async function callNetlifyFunction(endpoint, data = {}) {
@@ -29,52 +27,22 @@ async function callNetlifyFunction(endpoint, data = {}) {
 }
 
 // Function to handle Discord ID self-assignment
-async function selfAssignDiscordId(discordId) {
-    return await callNetlifyFunction('selfAssign', { discordId });
+async function selfAssignDiscordId(userName) {
+    const response = await callNetlifyFunction('selfAssign', { userName });
+    return response;
 }
 
-// Event listener for the search button (Search by Telegram username)
+// Event listener for the search button
 document.getElementById('apiRequestBtn')?.addEventListener('click', async () => {
     if (!userName) {
         showMessage('errorMsg', 'Telegram username not found');
         return;
     }
 
-    const searchResponse = await callNetlifyFunction('search', { identifier: 'telegramUser', value: userName });
-
-    if (searchResponse?.status === 200) {
-        const foundDiscordId = searchResponse.discordId;
-        if (foundDiscordId) {
-            const selfAssignResponse = await selfAssignDiscordId(foundDiscordId);
-            if (selfAssignResponse?.status === 200) {
-                showMessage('responseMsg', 'Discord ID sent successfully');
-            } else {
-                showMessage('errorMsg', 'Failed to self-assign Discord ID.');
-            }
-        } else {
-            showMessage('responseMsg', 'No Discord ID found');
-        }
+    const response = await selfAssignDiscordId(userName);
+    if (response?.message) {
+        showMessage('responseMsg', response.message);
     } else {
-        showMessage('responseMsg', 'User not found');
-    }
-});
-
-// Event listener for the create button (Create new user)
-document.getElementById('apiLinkDiscord')?.addEventListener('click', async () => {
-    if (!(userName && userId && discordId)) {
-        showMessage('errorMsg', 'Missing user data for creating an account');
-        return;
-    }
-
-    const createResponse = await callNetlifyFunction('createUser', {
-        telegramUser: userName,
-        discordId,
-        telegramId: userId,
-    });
-
-    if (createResponse?.status === 201) {
-        showMessage('responseMsg', 'User created successfully');
-    } else {
-        showMessage('errorMsg', createResponse?.message || 'Failed to create user');
+        showMessage('errorMsg', 'Failed to self-assign Discord ID.');
     }
 });
