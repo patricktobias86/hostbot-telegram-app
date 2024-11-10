@@ -1,6 +1,3 @@
-
-import fetch from 'node-fetch';
-
 exports.handler = async (event) => {
   let requestBody;
   try {
@@ -12,15 +9,8 @@ exports.handler = async (event) => {
     };
   }
 
-  const { action, identifier, value, telegramUser, discordId, telegramId, newTelegramUser, newDiscordId, newTelegramId } = requestBody;
+  const { action } = requestBody;
   const googleApiUrl = 'https://script.google.com/macros/s/AKfycbwiOGrtL0UkHFDToUOcz3GEFkvY89wT53vasHO227xco4W-i8HbBNQYKFUInFFe-cqqHQ/exec';
-
-  if (!googleApiUrl) {
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ message: 'Google API URL is not set' })
-    };
-  }
 
   if (!action) {
     return {
@@ -29,9 +19,11 @@ exports.handler = async (event) => {
     };
   }
 
-  // Add your logic for handling different actions here
+  const response = await fetch(googleApiUrl);
+  const data = await response.json();
+
   return {
     statusCode: 200,
-    body: JSON.stringify({ message: 'Action processed successfully' })
+    body: JSON.stringify({ message: 'Action processed successfully', data })
   };
 };

@@ -4,8 +4,5 @@
   "description": "Once the script is connected, a `window.Telegram.WebApp` object will become available.",
   "main": "app.js",
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "node-fetch": "^3.3.2"
-  }
+  "license": "ISC"
 }

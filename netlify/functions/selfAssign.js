@@ -1,6 +1,3 @@
-
-import fetch from 'node-fetch';
-
 exports.handler = async (event) => {
   let requestBody;
   try {
