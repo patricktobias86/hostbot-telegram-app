@@ -16,7 +16,8 @@ async function callGoogleApi(action, data = {}) {
         const response = await fetch('/api/user', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ action, ...data })
+            body: JSON.stringify({ action, ...data }),
+            redirect: 'follow'
         });
 
         if (!response.ok) throw new Error(`Server responded with status: ${response.status}`);
