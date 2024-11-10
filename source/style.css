@@ -7,6 +7,13 @@
     --telegram-button-text-color: var(--tg-theme-button-text-color, #ffffff);
     --telegram-secondary-bg-color: var(--tg-theme-secondary-bg-color, #f4f4f5);
 }
+body {
+    background-color: var(--telegram-secondary-bg-color);
+    margin:0;
+    padding:0;
+    font: 12px / 18px "Lucida Grande", "Lucida Sans Unicode", Arial, Helvetica, Verdana, sans-serif;
+    color: var(--telegram-text-color);
+}
 
 .btn-primary,
 button {
@@ -44,12 +51,6 @@ ul {
     left: 0;
     right: 0;
     top: 0
-}
-
-body {
-    background-color: var(--telegram-secondary-bg-color);
-    margin:0;
-    padding:0;
 }
 
 body.gray,
