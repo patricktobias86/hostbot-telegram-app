@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="MobileOptimized" content="176"/>
+    <meta name="HandheldFriendly" content="True"/>
+    <meta name="robots" content="noindex,nofollow"/>
+    <link rel="preconnect" href="https://telegram.org">
+    <link rel="preconnect" href="https://api.retool.com">ß
+    <title></title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script>
+        function setThemeClass() {
+            document.documentElement.className = Telegram.WebApp.colorScheme;
+        }
+
+        Telegram.WebApp.onEvent('themeChanged', setThemeClass);
+        setThemeClass();
+    </script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="">
+
+    <section id="top_sect" class="second">
+<img src="https://primeupyour.life/assets/logo.webp" class="logo">
+    <button id="apiRequestBtn" onclick="HostBot.showAlert('If your Telegram & Discord is linked you will be assigned co-host within a few seconds.');">Self-assign co-host</button>
+    <button id="apiLinkDiscord" onclick="HostBot.showAlert('Nice! Give me a moment to save the data, wait for my confirmation.');">Link Discord account</button>
+    <p id="responseMsg"></p>
+    <p id="errorMsg"></p>
+</section>
+
+<script type="application/javascript">
+    const HostBot = {
+        initData      : Telegram.WebApp.initData || '',
+        initDataUnsafe: Telegram.WebApp.initDataUnsafe || {},
+        MainButton    : Telegram.WebApp.MainButton,
+
+        init(options) {
+            document.body.style.visibility = '';
+            Telegram.WebApp.ready();
+            Telegram.WebApp.MainButton.setParams({
+                text      : 'CLOSE HOSTBOT',
+                is_visible: true
+            }).onClick(HostBot.close);
+        },
+        expand() {
+            Telegram.WebApp.expand();
+        },
+        close() {
+            Telegram.WebApp.close();
+        },
+        // Alerts
+        showAlert(message) {
+            Telegram.WebApp.showAlert(message);
+        },
+        showConfirm(message) {
+            Telegram.WebApp.showConfirm(message);
+        },
+    }
+</script>
+
+
+<script type="application/javascript">
+    HostBot.init();
+</script>
+
+<script src="app.js"></script>
+
+</body>
+</html>
