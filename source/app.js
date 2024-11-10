@@ -4,16 +4,19 @@ const userName = username ? username.toLowerCase() : '';
 const userId = id;
 const discordId = window.Telegram.WebApp.initDataUnsafe.start_param;
 
+// Google Apps Script API URL
+const googleApiUrl = 'https://script.google.com/macros/s/AKfycbwiOGrtL0UkHFDToUOcz3GEFkvY89wT53vasHO227xco4W-i8HbBNQYKFUInFFe-cqqHQ/exec';
+
 // Utility function to display messages
 const showMessage = (elementId, message) => {
     const element = document.getElementById(elementId);
     if (element) element.textContent = message;
 };
 
-// Generalized function to handle API requests to the Netlify functions
-async function callNetlifyFunction(action, data = {}) {
+// Generalized function to handle API requests directly to Google Apps Script
+async function callGoogleApi(action, data = {}) {
     try {
-        const response = await fetch('/.netlify/functions/user', {
+        const response = await fetch(googleApiUrl, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ action, ...data })
@@ -30,7 +33,7 @@ async function callNetlifyFunction(action, data = {}) {
 
 // Function to send Discord ID to the self-assign API
 async function selfAssignDiscordId(discordId) {
-    return await callNetlifyFunction('selfAssign', { discordId });
+    return await callGoogleApi('selfAssign', { discordId });
 }
 
 // Event listener for the search button (Search by Telegram username)
@@ -40,7 +43,7 @@ document.getElementById('apiRequestBtn')?.addEventListener('click', async () => 
         return;
     }
 
-    const searchResponse = await callNetlifyFunction('search', { identifier: 'telegramUser', value: userName });
+    const searchResponse = await callGoogleApi('search', { identifier: 'telegramUser', value: userName });
 
     if (searchResponse?.status === 200) {
         const foundDiscordId = searchResponse.discordId;
@@ -67,7 +70,7 @@ document.getElementById('apiLinkDiscord')?.addEventListener('click', async () =>
         return;
     }
 
-    const createResponse = await callNetlifyFunction('create', {
+    const createResponse = await callGoogleApi('create', {
         telegramUser: userName,
         discordId,
         telegramId: userId
