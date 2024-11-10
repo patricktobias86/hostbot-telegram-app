@@ -17,27 +17,17 @@
       "oAP" : "\/public\/.gitignore",
       "oF" : 0
     },
-    "\/netlify\/functions\/selfAssign.js" : {
-      "bF" : 0,
-      "ft" : 64,
-      "ma" : 0,
-      "mi" : 1,
+    "\/netlify\/functions" : {
+      "ft" : 65536,
       "oA" : 1,
-      "oAP" : "\/public\/netlify\/functions\/selfAssign.js",
-      "oF" : 1,
-      "sC" : 0,
-      "tS" : 0
+      "oAP" : "\/public\/netlify\/functions",
+      "oF" : 1
     },
-    "\/netlify\/functions\/user.js" : {
-      "bF" : 0,
-      "ft" : 64,
-      "ma" : 0,
-      "mi" : 1,
-      "oA" : 1,
-      "oAP" : "\/public\/netlify\/functions\/user.js",
-      "oF" : 1,
-      "sC" : 0,
-      "tS" : 0
+    "\/node_modules" : {
+      "ft" : 65536,
+      "oA" : 2,
+      "oAP" : "\/public\/node_modules",
+      "oF" : 0
     },
     "\/package-lock.json" : {
       "ft" : 524288,
@@ -1709,7 +1699,7 @@
     ],
     "rollupTreeshakingEnabled" : 1,
     "rollupTreeshakingModuleSideEffects" : 1,
-    "skippedFoldersString" : "log, _logs, logs, _cache, cache, .idea, \/storage\/framework\/sessions, node_modules",
+    "skippedFoldersString" : "\/storage\/framework\/sessions,node_modules,_logs,logs,log,.idea,_cache,cache,\/netlify\/functions",
     "sourceFolderName" : "source",
     "susyVersion" : 3,
     "tsAllowArbitraryExtensions" : 0,

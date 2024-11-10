@@ -4,5 +4,8 @@
   "description": "Once the script is connected, a `window.Telegram.WebApp` object will become available.",
   "main": "app.js",
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "netlify-plugin-inline-functions-env": "^1.0.9"
+  }
 }

@@ -1,23 +1,22 @@
-// Extracting user data from the Telegram WebApp
-const { username, id } = window.Telegram.WebApp.initDataUnsafe.user;
-const userName = username ? username.toLowerCase() : '';
-const userId = id;
-const discordId = window.Telegram.WebApp.initDataUnsafe.start_param;
-
 // Utility function to display messages
 const showMessage = (elementId, message) => {
     const element = document.getElementById(elementId);
     if (element) element.textContent = message;
 };
 
-// Generalized function to handle API requests directly to Google Apps Script
-async function callGoogleApi(action, data = {}) {
+// Extracting user data from the Telegram WebApp
+const { username, id } = window.Telegram.WebApp.initDataUnsafe.user;
+const userName = username ? username.toLowerCase() : '';
+const userId = id;
+const discordId = window.Telegram.WebApp.initDataUnsafe.start_param;
+
+// Function to send API requests to Netlify functions
+async function callNetlifyFunction(endpoint, data = {}) {
     try {
-        const response = await fetch('/api/user', {
+        const response = await fetch(`/.netlify/functions/${endpoint}`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ action, ...data }),
-            redirect: 'follow'
+            body: JSON.stringify(data),
         });
 
         if (!response.ok) throw new Error(`Server responded with status: ${response.status}`);
@@ -29,9 +28,9 @@ async function callGoogleApi(action, data = {}) {
     }
 }
 
-// Function to send Discord ID to the self-assign API
+// Function to handle Discord ID self-assignment
 async function selfAssignDiscordId(discordId) {
-    return await callGoogleApi('selfAssign', { discordId });
+    return await callNetlifyFunction('selfAssign', { discordId });
 }
 
 // Event listener for the search button (Search by Telegram username)
@@ -41,11 +40,10 @@ document.getElementById('apiRequestBtn')?.addEventListener('click', async () => 
         return;
     }
 
-    const searchResponse = await callGoogleApi('search', { identifier: 'telegramUser', value: userName });
+    const searchResponse = await callNetlifyFunction('search', { identifier: 'telegramUser', value: userName });
 
     if (searchResponse?.status === 200) {
         const foundDiscordId = searchResponse.discordId;
-
         if (foundDiscordId) {
             const selfAssignResponse = await selfAssignDiscordId(foundDiscordId);
             if (selfAssignResponse?.status === 200) {
@@ -68,10 +66,10 @@ document.getElementById('apiLinkDiscord')?.addEventListener('click', async () =>
         return;
     }
 
-    const createResponse = await callGoogleApi('create', {
+    const createResponse = await callNetlifyFunction('createUser', {
         telegramUser: userName,
         discordId,
-        telegramId: userId
+        telegramId: userId,
     });
 
     if (createResponse?.status === 201) {
