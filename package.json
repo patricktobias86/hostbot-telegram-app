@@ -1,0 +1,11 @@
+{
+  "name": "hostbot-telegram-app",
+  "version": "1.0.0",
+  "description": "Once the script is connected, a `window.Telegram.WebApp` object will become available.",
+  "main": "app.js",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-fetch": "^3.3.2"
+  }
+}
