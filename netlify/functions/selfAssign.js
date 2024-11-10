@@ -1,55 +1,59 @@
+
 import fetch from 'node-fetch';
 
 exports.handler = async (event) => {
+  let requestBody;
   try {
-    // Parse the Discord ID from the request body
-    const { discordId } = JSON.parse(event.body);
-
-    if (!discordId) {
-      return {
-        statusCode: 400,
-        body: JSON.stringify({ error: 'Discord ID is required' }),
-      };
-    }
-
-    // Prepare the payload
-    const payload = {
-      variables: [
-        {
-          name: 'message',
-          variable: '{event_message}',
-          value: discordId,
-        },
-      ],
+    requestBody = JSON.parse(event.body);
+  } catch (error) {
+    return {
+      statusCode: 400,
+      body: JSON.stringify({ error: 'Invalid JSON format' }),
     };
+  }
 
-    // Make the API request using fetch
-    const response = await fetch('https://api.botghost.com/webhook/1225248009458155560/b0i1jgyjo2v9vqc6va10q', {
+  const { discordId } = requestBody;
+  if (!discordId) {
+    return {
+      statusCode: 400,
+      body: JSON.stringify({ error: 'Discord ID is required' })
+    };
+  }
+
+  const payload = {
+    variables: [
+      {
+        name: 'message',
+        variable: '{event_message}',
+        value: discordId,
+      }
+    ]
+  };
+
+  const apiUrl = process.env.GOOGLE_API_URL;
+  if (!apiUrl) {
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ message: 'API URL not configured' })
+    };
+  }
+
+  try {
+    const response = await fetch(apiUrl, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': '58cd5fbd95527583d576832e04c6852e914e405421cdb199abc72741e7667caa',
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
     });
 
-    // Check if the request was successful
-    if (!response.ok) {
-      return {
-        statusCode: response.status,
-        body: JSON.stringify({ error: 'Failed to send request', details: await response.text() }),
-      };
-    }
-
-    // Return success response
+    const result = await response.json();
     return {
       statusCode: 200,
-      body: JSON.stringify({ message: 'Discord ID sent successfully!' }),
+      body: JSON.stringify(result)
     };
   } catch (error) {
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: 'Server error', details: error.message }),
+      body: JSON.stringify({ error: 'Failed to send request', details: error.message })
     };
   }
 };
