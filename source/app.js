@@ -5,7 +5,7 @@ const userId = id;
 const discordId = window.Telegram.WebApp.initDataUnsafe.start_param;
 
 // Google Apps Script API URL
-const googleApiUrl = 'https://script.google.com/macros/s/AKfycbwiOGrtL0UkHFDToUOcz3GEFkvY89wT53vasHO227xco4W-i8HbBNQYKFUInFFe-cqqHQ/exec';
+const googleApiUrl = 'https://script.google.com/macros/s/AKfycbyFZzVHs1DcLNaqduDckWR45SuxXASAie9ioedmElsd8v9A5MjufTw3lJscQXl0ay1jsA/exec';
 
 // Utility function to display messages
 const showMessage = (elementId, message) => {
