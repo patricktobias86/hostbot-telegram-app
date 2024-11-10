@@ -30,9 +30,9 @@
       "ft" : 64,
       "ma" : 0,
       "mi" : 1,
-      "oA" : 0,
+      "oA" : 1,
       "oAP" : "\/public\/netlify\/functions\/apiRequests.js",
-      "oF" : 0,
+      "oF" : 1,
       "sC" : 0,
       "tS" : 0
     },
@@ -41,9 +41,9 @@
       "ft" : 64,
       "ma" : 0,
       "mi" : 1,
-      "oA" : 0,
+      "oA" : 1,
       "oAP" : "\/public\/netlify\/functions\/selfAssign.js",
-      "oF" : 0,
+      "oF" : 1,
       "sC" : 0,
       "tS" : 0
     },
@@ -52,9 +52,9 @@
       "ft" : 64,
       "ma" : 0,
       "mi" : 1,
-      "oA" : 0,
+      "oA" : 1,
       "oAP" : "\/public\/netlify\/functions\/user.js",
-      "oF" : 0,
+      "oF" : 1,
       "sC" : 0,
       "tS" : 0
     },
@@ -80,12 +80,6 @@
       "oO" : 1,
       "oS" : 1
     },
-    "\/public" : {
-      "ft" : 65536,
-      "oA" : 1,
-      "oAP" : "\/public\/public",
-      "oF" : 0
-    },
     "\/README.md" : {
       "cB" : 0,
       "cS" : 0,
@@ -95,9 +89,9 @@
       "eSQ" : 1,
       "ft" : 4096,
       "hM" : 0,
-      "oA" : 0,
+      "oA" : 1,
       "oAP" : "\/public\/README.html",
-      "oF" : 0,
+      "oF" : 1,
       "oFM" : 0,
       "oS" : 0,
       "pHT" : 0,
@@ -156,7 +150,8 @@
     "displayValue" : "hostbot-telegram-app",
     "displayValueWasSetByUser" : 0,
     "iconImageName" : "brackets-brick",
-    "iconImageWasSetByUser" : 0
+    "iconImageWasSetByUser" : 0,
+    "lastBuiltDate" : 752941960.45637
   },
   "projectSettings" : {
     "abortBuildOnError" : 1,
@@ -1535,7 +1530,7 @@
       "strictUnits" : 0
     },
     "languageDefaultsMARKDOWN" : {
-      "autoOutputAction" : 0,
+      "autoOutputAction" : 1,
       "autoOutputPathFilenamePattern" : "*.html",
       "autoOutputPathRelativePath" : "",
       "autoOutputPathReplace1" : "",
