@@ -1,4 +1,4 @@
-const fetch = require('node-fetch');
+import fetch from 'node-fetch';
 
 exports.handler = async (event) => {
   const { action, identifier, value, telegramUser, discordId, telegramId, newTelegramUser, newDiscordId, newTelegramId } = JSON.parse(event.body);

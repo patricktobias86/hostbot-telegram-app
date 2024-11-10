@@ -80,6 +80,12 @@
       "oO" : 1,
       "oS" : 1
     },
+    "\/public" : {
+      "ft" : 65536,
+      "oA" : 1,
+      "oAP" : "\/public\/public",
+      "oF" : 0
+    },
     "\/README.md" : {
       "cB" : 0,
       "cS" : 0,
