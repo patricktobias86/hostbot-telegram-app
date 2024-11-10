@@ -13,7 +13,7 @@ const showMessage = (elementId, message) => {
 // Generalized function to handle API requests to the Netlify functions
 async function callNetlifyFunction(action, data = {}) {
     try {
-        const response = await fetch('/.netlify/functions', {
+        const response = await fetch('/.netlify/functions/user', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ action, ...data })
