@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Once the script is connected, a `window.Telegram.WebApp` object will become available.",
   "main": "app.js",
+  "type": "module",
   "author": "",
   "license": "ISC",
   "devDependencies": {
