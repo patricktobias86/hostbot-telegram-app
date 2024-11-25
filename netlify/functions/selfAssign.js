@@ -17,7 +17,7 @@ export async function handler(event) {
         }
 
         // Call Google Apps Script API for self-assignment
-        const response = await fetch(process.env.GOOGLE_API_ENDPOINT, {
+        const response = await fetch(process.env.GOOGLE_API_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ action: 'selfAssign', userName }),
