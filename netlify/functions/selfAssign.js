@@ -1,4 +1,4 @@
-// netlify/functions/selfAssign.mjs
+// netlify/functions/selfAssign.js
 export async function handler(event) {
     if (event.httpMethod !== 'POST') {
         return {
@@ -17,10 +17,10 @@ export async function handler(event) {
         }
 
         // Call Google Apps Script API for self-assignment
-        const response = await fetch(process.env.GOOGLE_API_URL, {
+        const response = await fetch('https://primepnp.retool.com/url/telegram/selfassign', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ action: 'selfAssign', userName }),
+            body: JSON.stringify({ user: userName }),
         });
 
         // Check if the API request was successful
