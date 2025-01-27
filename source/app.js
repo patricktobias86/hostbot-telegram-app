@@ -32,12 +32,29 @@ async function selfAssignDiscordId(userName) {
     return response;
 }
 
+// Disable button for 10 seconds after being clicked
+const disableButton = (button, duration = 10000) => {
+    button.disabled = true; // Disable the button
+    const originalText = button.textContent; // Save the original button text
+    button.textContent = 'Please wait...'; // Change the button text
+
+    // Re-enable the button after the specified duration
+    setTimeout(() => {
+        button.disabled = false; // Re-enable the button
+        button.textContent = originalText; // Restore the original button text
+    }, duration);
+};
+
 // Event listener for the search button
 document.getElementById('apiRequestBtn')?.addEventListener('click', async () => {
+    const button = document.getElementById('apiRequestBtn');
     if (!userName) {
         showMessage('errorMsg', 'Telegram username not found');
         return;
     }
+
+    // Disable the button for 10 seconds
+    disableButton(button);
 
     const response = await selfAssignDiscordId(userName);
     if (response?.message) {
