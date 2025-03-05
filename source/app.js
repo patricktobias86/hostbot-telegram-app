@@ -45,7 +45,7 @@ const disableButton = (button, duration = 10000) => {
     }, duration);
 };
 
-// Event listener for the search button
+// Event listener for the self-assign button
 document.getElementById('apiRequestBtn')?.addEventListener('click', async () => {
     const button = document.getElementById('apiRequestBtn');
     if (!userName) {
@@ -53,13 +53,22 @@ document.getElementById('apiRequestBtn')?.addEventListener('click', async () => 
         return;
     }
 
-    // Disable the button for 10 seconds
-    disableButton(button);
+    // Show confirmation popup before proceeding
+    Telegram.WebApp.showConfirm(
+        "You need to help out with promo when you co-host every now and then. If you don't want to promo, there is no need to co-host.",
+        async (confirmed) => {
+            if (!confirmed) return; // Stop if the user cancels
 
-    const response = await selfAssignDiscordId(userName);
-    if (response?.message) {
-        showMessage('responseMsg', response.message);
-    } else {
-        showMessage('errorMsg', 'Failed to self-assign Discord ID.');
-    }
+            // Disable the button for 10 seconds
+            disableButton(button);
+
+            // Send API request
+            const response = await selfAssignDiscordId(userName);
+            if (response?.message) {
+                showMessage('responseMsg', response.message);
+            } else {
+                showMessage('errorMsg', 'Failed to self-assign Discord ID.');
+            }
+        }
+    );
 });
