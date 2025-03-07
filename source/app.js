@@ -32,8 +32,8 @@ async function selfAssignDiscordId(userName) {
     return response;
 }
 
-// Disable button for 10 seconds after being clicked
-const disableButton = (button, duration = 10000) => {
+// Disable button for 15 seconds after being clicked
+const disableButton = (button, duration = 15000) => {
     button.disabled = true; // Disable the button
     const originalText = button.textContent; // Save the original button text
     button.textContent = 'Please wait...'; // Change the button text
