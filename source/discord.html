@@ -71,8 +71,8 @@
 
         // Dummy values for testing — replace with real user input if available
         const telegramId = window.Telegram.WebApp.initDataUnsafe.user?.id;
-        const urlParams = new URLSearchParams(window.Telegram.WebApp.initDataUnsafe.start_param);
-        let discordId = urlParams.get('startapp');
+        const startParam = window.Telegram.WebApp.initDataUnsafe?.start_param || "No start_param available";
+        let discordId = startParam;
 
         if (!discordId) {
             discordId = prompt('Enter your Discord ID:'); // Fallback if not in query string

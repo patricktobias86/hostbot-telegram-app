@@ -81,8 +81,9 @@ document.getElementById('apiLinkDiscord')?.addEventListener('click', async () =>
     }
 
     // Extract discordId from the query string if available
-    const urlParams = new URLSearchParams(window.Telegram.WebApp.initDataUnsafe.start_param);
-    let discordId = urlParams.get('startapp');
+    // Get the start_param from Telegram WebApp
+    const startParam = tg.initDataUnsafe?.start_param || "No start_param available";
+    let discordId = startParam;
 
     if (!discordId) {
         discordId = prompt('Enter your Discord ID:'); // Fallback if not in query string
