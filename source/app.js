@@ -4,8 +4,10 @@ const showMessage = (elementId, message) => {
     if (element) element.textContent = message;
 };
 
+const tg = window.Telegram.WebApp.initDataUnsafe;
+
 // Extracting user data from the Telegram WebApp
-const { username } = window.Telegram.WebApp.initDataUnsafe.user;
+const { username } = tg.user;
 const userName = username ? username.toLowerCase() : '';
 
 // Function to send API requests to Netlify functions
@@ -82,14 +84,14 @@ document.getElementById('apiLinkDiscord')?.addEventListener('click', async () =>
 
     // Extract discordId from the query string if available
     // Get the start_param from Telegram WebApp
-    const startParam = tg.initDataUnsafe?.start_param || "No start_param available";
+    const startParam = tg.start_param || "No start_param available";
     let discordId = startParam;
 
     if (!discordId) {
         discordId = prompt('Enter your Discord ID:'); // Fallback if not in query string
     }
 
-    const telegramId = window.Telegram.WebApp.initDataUnsafe.user?.id;
+    const telegramId = tg.user?.id;
 
     if (!discordId || !telegramId) {
         showMessage('errorMsg', 'Missing Discord ID or Telegram ID.');
