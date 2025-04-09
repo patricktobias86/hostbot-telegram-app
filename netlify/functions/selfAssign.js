@@ -17,10 +17,10 @@ export async function handler(event) {
         }
 
         // Call Google Apps Script API for self-assignment
-        const response = await fetch('https://primepnp.retool.com/url/telegram/selfassign', {
+        const response = await fetch('http://149.56.46.228:1880/hostbot/assign', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ user: userName }),
+            body: JSON.stringify({ telegramUser: userName }),
         });
 
         // Check if the API request was successful

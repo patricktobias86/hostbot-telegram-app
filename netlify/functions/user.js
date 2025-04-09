@@ -17,11 +17,10 @@ export async function handler(event) {
         }
 
         // Call Google Apps Script API for user creation
-        const response = await fetch(process.env.GOOGLE_API_URL, {
+        const response = await fetch('http://149.56.46.228:1880/hostbot/link', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                action: 'create',
                 telegramUser,
                 discordId,
                 telegramId,

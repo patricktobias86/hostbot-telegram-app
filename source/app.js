@@ -72,3 +72,38 @@ document.getElementById('apiRequestBtn')?.addEventListener('click', async () => 
         }
     );
 });
+
+document.getElementById('apiLinkDiscord')?.addEventListener('click', async () => {
+    const button = document.getElementById('apiLinkDiscord');
+    if (!userName) {
+        showMessage('errorMsg', 'Telegram username not found');
+        return;
+    }
+
+    // Extract discordId from the query string if available
+    const urlParams = new URLSearchParams(window.Telegram.WebApp.initDataUnsafe.start_param);
+    let discordId = urlParams.get('startapp');
+
+    if (!discordId) {
+        discordId = prompt('Enter your Discord ID:'); // Fallback if not in query string
+    }
+
+    const telegramId = window.Telegram.WebApp.initDataUnsafe.user?.id;
+
+    if (!discordId || !telegramId) {
+        showMessage('errorMsg', 'Missing Discord ID or Telegram ID.');
+        return;
+    }
+
+    const response = await callNetlifyFunction('user', {
+        telegramUser: userName,
+        discordId,
+        telegramId,
+    });
+
+    if (response?.message) {
+        showMessage('responseMsg', response.message);
+    } else {
+        showMessage('errorMsg', 'Failed to link Discord account.');
+    }
+});
