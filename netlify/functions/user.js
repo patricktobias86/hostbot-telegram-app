@@ -16,7 +16,6 @@ export async function handler(event) {
             };
         }
 
-        // Call Google Apps Script API for user creation
         const response = await fetch('http://149.56.46.228:1880/hostbot/link', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -27,14 +26,20 @@ export async function handler(event) {
             }),
         });
 
-        const result = await response.json();
-
-        return {
-            statusCode: response.status,
-            body: JSON.stringify(result),
-        };
+        // Check if the API request was successful
+        if (response.ok) {
+            return {
+                statusCode: 200,
+                body: JSON.stringify({ message: 'Discord successfully linked.' }),
+            };
+        } else {
+            return {
+                statusCode: response.status,
+                body: JSON.stringify({ message: 'Failed to link Discord account.' }),
+            };
+        }
     } catch (error) {
-        console.error('Error in createUser:', error);
+        console.error('Error in user:', error);
         return {
             statusCode: 500,
             body: JSON.stringify({ message: 'Server error' }),
