@@ -104,7 +104,7 @@ document.getElementById('apiLinkDiscord')?.addEventListener('click', async () =>
         telegramId,
     });
 
-    if (response?.statusCode === 200) {
+    if (response?.message === 'ok') {
         showMessage('responseMsg', 'Discord successfully linked.');
     } else {
         showMessage('errorMsg', 'Failed to link Discord account.');

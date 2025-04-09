@@ -30,12 +30,12 @@ export async function handler(event) {
         if (response.ok) {
             return {
                 statusCode: 200,
-                body: JSON.stringify({ message: 'Discord successfully linked.' }),
+                body: JSON.stringify({ message: 'ok' }),
             };
         } else {
             return {
                 statusCode: response.status,
-                body: JSON.stringify({ message: 'Failed to link Discord account.' }),
+                body: JSON.stringify({ message: 'failed' }),
             };
         }
     } catch (error) {
