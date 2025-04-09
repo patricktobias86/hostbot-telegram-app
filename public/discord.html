@@ -9,7 +9,6 @@
     <meta name="HandheldFriendly" content="True"/>
     <meta name="robots" content="noindex,nofollow"/>
     <link rel="preconnect" href="https://telegram.org">
-    <link rel="preconnect" href="https://api.retool.com">ß
     <title></title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
@@ -89,8 +88,8 @@
             telegramId,
         });
 
-        if (response?.message) {
-            showMessage('responseMsg', response.message);
+        if (response?.status === 200) {
+            showMessage('responseMsg', 'Discord successfully linked.');
         } else {
             showMessage('errorMsg', 'Failed to link Discord account.');
         }
