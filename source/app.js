@@ -74,3 +74,28 @@ document.getElementById('apiRequestBtn')?.addEventListener('click', async () => 
         }
     );
 });
+
+// Event listener for the Link Discord account button
+document.getElementById('apiLinkDiscord')?.addEventListener('click', async () => {
+    if (!userName) {
+        showMessage('errorMsg', 'Telegram username not found');
+        return;
+    }
+    const telegramId = tg.user?.id;
+    // Try to get Discord ID from Telegram start_param, fallback to prompt
+    let discordId = tg.start_param || prompt('Enter your Discord ID:');
+    if (!discordId || !telegramId) {
+        showMessage('errorMsg', 'Missing Discord ID or Telegram ID.');
+        return;
+    }
+    const response = await callNetlifyFunction('user', {
+        telegramUser: userName,
+        discordId,
+        telegramId,
+    });
+    if (response?.message === 'ok') {
+        showMessage('responseMsg', 'Discord successfully linked.');
+    } else {
+        showMessage('errorMsg', 'Failed to link Discord account.');
+    }
+});
